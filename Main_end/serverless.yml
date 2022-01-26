@@ -17,15 +17,16 @@ functions:
       - http:
           path: /
           method: GET 
+  tomar: 
+    handler: handler.vueltaPdf
+    events: 
+      - http: 
+          path: /tomar
+          method: GET
 
 plugins:
   - serverless-s3-local
   - serverless-offline
-custom:
-  s3:
-    host: localhost
-    directory: /tmp
-
 resources:
   Resources:
     NewResource:
