@@ -28,7 +28,7 @@ def llamada(event, context):
 
     client = boto3.client('s3', aws_access_key_id='S3RVER', aws_secret_access_key='S3RVER',config = Config(s3={'addressing_style': 'path'}))
 
-    client.upload_file(Filename="Data.pdf",Bucket="local-bucket",Key="Data.pdf")
+    client.upload_file(Filename="Data.pdf",Bucket="local-bucket",Key=None)
     
     response = {"statusCode": 200, "body": response.text}
     
