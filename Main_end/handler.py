@@ -43,12 +43,3 @@ def llamada(event, context):
     
     return response
 
-
-def vueltaPdf(event,context):
-    s3 = boto3.client('s3', aws_access_key_id="S3RVER",
-                      aws_secret_access_key="S3VER",
-                      region_name="us-east-1",
-                      endpoint_url="http://localhost:4569")
-    s3.download_file('local-bucket', 'Data.pdf', 'DataDescargada.pdf')
-
-    return {"statusCode":200,"body": "{version: okbro}"}

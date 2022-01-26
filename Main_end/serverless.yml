@@ -16,14 +16,7 @@ functions:
     events:
       - http:
           path: /
-          method: GET 
-  tomar: 
-    handler: handler.vueltaPdf
-    events: 
-      - http: 
-          path: /tomar
-          method: GET
-
+          method: POST 
 plugins:
   - serverless-s3-local
   - serverless-offline
