@@ -18,11 +18,30 @@ functions:
           path: /
           method: POST 
 plugins:
+  - serverless-dynamodb-local
   - serverless-s3-local
   - serverless-offline
+  
 resources:
   Resources:
+    DolarDia:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: DolarDia
+        AttributeDefinitions:
+          - AttributeName: fecha
+            AttributeType: S
+        KeySchema:
+          - AttributeName: fecha
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
     NewResource:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: local-bucket
+custom:
+  dynamodb:
+    stages:
+      - dev
