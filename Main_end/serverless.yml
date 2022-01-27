@@ -8,6 +8,7 @@ frameworkVersion: '2 || 3'
 provider:
   name: aws
   runtime: python3.8
+  profile: default
   lambdaHashingVersion: 20201221
 
 functions:
@@ -15,8 +16,18 @@ functions:
     handler: handler.llamada
     events:
       - http:
-          path: /
+          path: /Llamada
           method: POST 
+  NuevoDolar:
+    handler: handler.NuevoDolar
+    events:
+      - schedule: rate(5 minutes)
+  TestingData:
+    handler: handler.TestingData
+    events:
+      - http:
+          path: /ListaTabla
+          method: GET
 plugins:
   - serverless-dynamodb-local
   - serverless-s3-local
@@ -35,8 +46,8 @@ resources:
           - AttributeName: fecha
             KeyType: HASH
         ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
+          ReadCapacityUnits: 10
+          WriteCapacityUnits: 10
     NewResource:
       Type: AWS::S3::Bucket
       Properties:
