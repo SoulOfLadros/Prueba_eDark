@@ -1,5 +1,5 @@
-org: sebastian97
-app: python-test
+org: 
+app: 
 service: python-test
 
 frameworkVersion: '2 || 3'
